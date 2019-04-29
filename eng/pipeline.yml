@@ -134,11 +134,9 @@ jobs:
           $(_PlatformArgs)
         displayName: Windows Build / Publish
 
-      - powershell: eng\common\cibuild.cmd
-           -configuration $(_BuildConfig) 
-          -prepareMachine
-          $(_PublishArgs)
-          $(_SignArgs)
+      - powershell: eng\common\build.ps1
+          -restore
+          -configuration $(_BuildConfig) 
           $(_OfficialBuildIdArgs)
           $(_PlatformArgs)
           -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj

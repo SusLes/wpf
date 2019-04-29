@@ -1,6 +1,11 @@
 
 <Project Sdk="Microsoft.DotNet.Helix.Sdk" DefaultTargets="Test">
   <PropertyGroup>
+
+    <!-- Workarounds for Arcade bug: https://github.com/dotnet/arcade/issues/2641 -->
+    <_NuGetRestoreTargets>$(MSBuildToolsPath32)\..\..\..\Common7\IDE\CommonExtensions\Microsoft\NuGet\NuGet.targets</_NuGetRestoreTargets>
+    <NuGetRestoreTargets>true</NuGetRestoreTargets>
+    
     <!-- These properties help ensure proper and consistent restore behavior -->
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RestorePackagesPath>$(MSBuildThisFileDirectory)packages</RestorePackagesPath>

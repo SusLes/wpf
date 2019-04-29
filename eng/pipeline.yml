@@ -138,6 +138,7 @@ jobs:
           -restore
           -test
           -ci
+          -prepareMachine
           -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj
           $(_OfficialBuildIdArgs)
           $(_PlatformArgs)

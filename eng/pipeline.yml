@@ -136,6 +136,8 @@ jobs:
 
       - powershell: eng\common\build.ps1
           -restore
+          -test
+          -ci
           -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj
           $(_OfficialBuildIdArgs)
           $(_PlatformArgs)
@@ -158,13 +160,10 @@ jobs:
         condition: and(succeeded(), eq(variables['_BuildConfig'], 'Release')) # on helix machine (with real signing)
 
       # Run DRTs
-      - powershell: eng\common\build.ps1
-          -ci
-          -preparemachine
+      - powershell: eng\common\cibuild.cmd
           -configuration $(_BuildConfig)
           $(_OfficialBuildIdArgs) 
           $(_PlatformArgs)
-          -test
           -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj
           /bl:$(BUILD.SOURCESDIRECTORY)\artifacts\log\$(_BuildConfig)\HelixUnit.binlog
         displayName: Run Developer Regression Tests on Helix Machine (Release)

@@ -134,15 +134,14 @@ jobs:
           $(_PlatformArgs)
         displayName: Windows Build / Publish
 
-      - powershell: eng\common\build.ps1
-          -restore
-          -test
-          -ci
+      - powershell: eng\common\cibuild.cmd
+           -configuration $(_BuildConfig) 
           -prepareMachine
-          -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj
+          $(_PublishArgs)
+          $(_SignArgs)
           $(_OfficialBuildIdArgs)
           $(_PlatformArgs)
-          /p:WpfTest=true
+          -projects $(Build.SourcesDirectory)\eng\helix\helixpublish.proj
         displayName: Restoring Nuget Dependencies for Helix
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)

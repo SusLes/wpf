@@ -25,6 +25,7 @@
     <!--<PackageReference Include="QV.Wpf.Test" Version="1.0.0" /> -->
     <HelixCorrelationPayload Include="..\..\HelixPayload\$(Configuration)\$(Platform)" /> 
     <HelixWorkItem Include="HelloHelix">
+      <PreCommands>echo %PATH%</PreCommands>
       <Timeout>00:20:00</Timeout>
       <Command>dotnet --info</Command>
     </HelixWorkItem>

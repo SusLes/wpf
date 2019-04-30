@@ -11,7 +11,7 @@
     <EnableXUnitReporter>true</EnableXUnitReporter>
     <EnableAzurePipelinesReporter>true</EnableAzurePipelinesReporter>
     <FailOnMissionControlTestFailure>true</FailOnMissionControlTestFailure>
-    <HelixPreCommands>$(HelixPreCommands);</HelixPreCommands>
+    <HelixPreCommands>$(HelixPreCommands); powershell %HELIX_CORRELATION_PAYLOAD%\configure-helix-machine.ps1 </HelixPreCommands>
 
     <!-- These help ensure proper restore behavior for Microsoft.NETCore.Platforms -->
     <DisableImplicitNETCorePlatformsReference>true</DisableImplicitNETCorePlatformsReference>
@@ -24,17 +24,15 @@
   <ItemGroup>
     <!--<PackageReference Include="QV.Wpf.Test" Version="1.0.0" /> -->
     <HelixCorrelationPayload Include="..\..\HelixPayload\$(Configuration)\$(Platform)" /> 
-    <!--
     <HelixWorkItem Include="HelloHelix">
-      <PreCommands>%HELIX_CORRELATION_PAYLOAD%\configure-helix-machine.ps1</PreCommands>
       <Timeout>00:20:00</Timeout>
-      <Command>dotnet -info</Command>
+      <Command>dotnet --info</Command>
     </HelixWorkItem>
-    -->
-    <HelixWorkItem Include="Ping stevenki">
+    <!--<HelixWorkItem Include="Ping stevenki">
       <Timeout>00:20:00</Timeout>
       <Command>ping \\stevenki1\public</Command>
     </HelixWorkItem>
+    -->
    <!-- 
    <HelixWorkItem Include="Annotations">
       <Timeout>00:20:00</Timeout>

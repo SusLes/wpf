@@ -2,6 +2,7 @@
 
 $dotnetLocation = Join-Path (Split-Path -Parent $script:MyInvocation.MyCommand.Path) "dotnet"
 
+Write-Output "Adding dotnet location to path: $dotnetLocation"
 # Prepend the path to ensure that dotnet.exe is called from there.
 $env:path="$dotnetLocation;$env:path"
 

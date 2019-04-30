@@ -13,6 +13,11 @@
     <EnableAzurePipelinesReporter>true</EnableAzurePipelinesReporter>
     <FailOnMissionControlTestFailure>true</FailOnMissionControlTestFailure>
     <HelixPreCommands>$(HelixPreCommands); %HELIX_CORRELATION_PAYLOAD%\configure-helix-machine.ps1 </HelixPreCommands>
+
+    <RestoreSources>
+      $(RestoreSources);
+      https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
+    </RestoreSources>
   </PropertyGroup>
 
   <ItemGroup>

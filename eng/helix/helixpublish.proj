@@ -5,7 +5,6 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RestorePackagesPath>$(MSBuildThisFileDirectory)packages</RestorePackagesPath>
     
-    <DisableImplicitNETCorePlatformsReference>true</DisableImplicitNETCorePlatformsReference>
     
     <!-- We copy our own dotnet payload over to the machine, so we don't want/need a different dotnet install -->
     <IncludeDotNetCli>false</IncludeDotNetCli>
@@ -14,6 +13,8 @@
     <FailOnMissionControlTestFailure>true</FailOnMissionControlTestFailure>
     <HelixPreCommands>$(HelixPreCommands); %HELIX_CORRELATION_PAYLOAD%\configure-helix-machine.ps1 </HelixPreCommands>
 
+    <!-- These help ensure proper restore behavior for Microsoft.NETCore.Platforms -->
+    <DisableImplicitNETCorePlatformsReference>true</DisableImplicitNETCorePlatformsReference>
     <RestoreSources>
       $(RestoreSources);
       https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json
@@ -22,7 +23,7 @@
 
   <ItemGroup>
     <!--<PackageReference Include="QV.Wpf.Test" Version="1.0.0" /> -->
-    <HelixCorrelationPayload Include="..\HelixPayload\$(Configuration)\$(Platform)" /> 
+    <HelixCorrelationPayload Include="..\..\HelixPayload\$(Configuration)\$(Platform)" /> 
     <HelixWorkItem Include="HelloHelix">
       <Timeout>00:20:00</Timeout>
       <Command>dotnet --info</Command>

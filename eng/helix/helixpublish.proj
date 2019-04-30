@@ -5,8 +5,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <RestorePackagesPath>$(MSBuildThisFileDirectory)packages</RestorePackagesPath>
     
-    <!-- Set WpfTest to true to disable implicit Microsoft.NETCore.Platforms package reference -->
-    <WpfTest>true</WpfTest>
+    <DisableImplicitNETCorePlatformsReference>true</DisableImplicitNETCorePlatformsReference>
     
     <!-- We copy our own dotnet payload over to the machine, so we don't want/need a different dotnet install -->
     <IncludeDotNetCli>false</IncludeDotNetCli>

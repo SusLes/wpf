@@ -17,7 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="QV.Wpf.Test" Version="1.0.0" />
+    <!--<PackageReference Include="QV.Wpf.Test" Version="1.0.0" /> -->
     <HelixCorrelationPayload Include="..\HelixPayload\$(Configuration)\$(Platform)" /> 
     <HelixWorkItem Include="HelloHelix">
       <Timeout>00:20:00</Timeout>

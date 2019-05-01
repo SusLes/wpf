@@ -46,5 +46,6 @@ $localDotnetInstall = Join-Path $env:BUILD_SOURCESDIRECTORY '.dotnet'
 $dotnetPayloadLocation = Join-Path $payloadDir "dotnet"
 CopyFolderStructure $localDotnetInstall $dotnetPayloadLocation
 
-$configScriptLocation = Join-Path (Split-Path -Parent $script:MyInvocation.MyCommand.Path) "configure-helix-machine.ps1"
-Copy-Item $configScriptLocation $payloadDir
+# Copy scripts
+Copy-Item "configure-helix-machine.ps1" $payloadDir
+Copy-Item "runtests.cmd" $payloadDir
